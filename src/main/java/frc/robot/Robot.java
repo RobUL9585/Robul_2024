@@ -109,7 +109,9 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         RobotContainer.getInstance().m_driveTrain.CMDteleOp(RobotContainer.getInstance().getDriveController(),RobotContainer.getInstance().getArmController());
-       
+        RobotContainer.getInstance().m_intake.CMDteleOp(RobotContainer.getInstance().getArmController());
+        RobotContainer.getInstance().m_shooter.CMDteleOp(RobotContainer.getInstance().getArmController());
+
     }
 
     @Override

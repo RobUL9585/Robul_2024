@@ -23,14 +23,33 @@ public class Constants {
    
      public static final class DriveConstants {
         public static final double maxSpeed = 0.6;
-    //    public static final int kLeftMotor1Port = 0;
-    //    public static final int kLeftMotor2Port = 1;
-    //    public static final int kRightMotor1Port = 2;
-    //    public static final int kRightMotor2Port = 3; 
+        public static final int leftFrontId = 1;
+          public static final int leftBackId = 2;
+          public static final int rightFrontId = 3;
+          public static final int rightBackId = 4;
        
      }
     
+     public static final class ArmConstants{
+          public static final int intakeLeftId = 5;
+          public static final int intakeRightId = 6;
+          public static final int intakeSpinId = 7;
+          public static final double intakeSpinSpeedIn = 0.2;
+          public static final double intakeSpinSpeedOut = -0.7;
 
+          public static final double intakeSpeedUp = 0.25;
+          public static final double intakeSpeedDown = -0.25;
+
+
+          public static final int shooterLowerId = 8;
+          public static final int shooterHigherId = 9;
+          public static final double shooterSpeedFast = 0.7;
+          public static final double shooterSpeedSlow = 0.2;
+          public static final double shooterSpeedIn = -0.2;
+
+
+
+     }
     
 }
 
