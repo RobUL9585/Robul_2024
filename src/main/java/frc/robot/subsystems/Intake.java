@@ -92,7 +92,7 @@ public class Intake extends SubsystemBase {
             intakeSpin.set(0);
         }
 
-        if(armController.y().getAsBoolean()){
+        if(armController.y().getAsBoolean() && getPosition() < Constants.ArmConstants.intakeMaxPosition){
             if(armController.getLeftTriggerAxis()==0){
             intakeLeft.set(Constants.ArmConstants.intakeSpeedUp);
             intakeRight.set(Constants.ArmConstants.intakeSpeedUp);
@@ -100,7 +100,7 @@ public class Intake extends SubsystemBase {
             else{intakeLeft.set(0.25*armController.getLeftTriggerAxis());
             intakeRight.set(0.25*armController.getLeftTriggerAxis());}
         }
-        else if(armController.a().getAsBoolean()){
+        else if(armController.a().getAsBoolean() && getPosition() > Constants.ArmConstants.intakeMinPosition){
              if(armController.getLeftTriggerAxis()==0){
             intakeLeft.set(Constants.ArmConstants.intakeSpeedDown);
             intakeRight.set(Constants.ArmConstants.intakeSpeedDown);
@@ -112,6 +112,10 @@ public class Intake extends SubsystemBase {
         }
  
     
+    public void gotoPosition(){
+
+    }
+
     public double getPosition(){
         return (intakeLeft.getEncoder().getPosition() - intakeLeftZeroOffset) + (intakeRight.getEncoder().getPosition() - intakeRightZeroOffset) *0.5;
     }
