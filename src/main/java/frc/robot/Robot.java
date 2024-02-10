@@ -111,6 +111,7 @@ public class Robot extends TimedRobot {
         RobotContainer.getInstance().m_driveTrain.CMDteleOp(RobotContainer.getInstance().getDriveController(),RobotContainer.getInstance().getArmController());
         RobotContainer.getInstance().m_intake.CMDteleOp(RobotContainer.getInstance().getArmController());
         RobotContainer.getInstance().m_shooter.CMDteleOp(RobotContainer.getInstance().getArmController());
+        RobotContainer.getInstance().updateSmartDashboard();
 
     }
 
