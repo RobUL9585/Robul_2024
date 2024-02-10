@@ -105,8 +105,46 @@ rightBack.burnFlash();
          //doDrive(-1* driveController.getLeftY(), driveController.getLeftX(), driveController.getRightTriggerAxis()*0.6);
 
         //mecanum drive
-        doDrive(-1* driveController.getLeftY(), driveController.getRightX(), driveController.getLeftX(),
+        // doDrive(-1* driveController.getLeftY(), driveController.getRightX(), driveController.getLeftX(),
+        //    RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+
+        //mechanum drive using pov (šipky)
+        if(driveController.povUp().getAsBoolean()){
+            doDrive(1, driveController.getRightX(), 0,
            RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+        }
+        else if(driveController.povUpLeft().getAsBoolean()){
+            doDrive(1, driveController.getRightX(), -1,
+           RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+        }
+        else if(driveController.povLeft().getAsBoolean()){
+            doDrive(0, driveController.getRightX(), -1,
+           RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+        }
+        else if(driveController.povDownLeft().getAsBoolean()){
+            doDrive(-1, driveController.getRightX(), -1,
+           RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+        }
+        else if(driveController.povDown().getAsBoolean()){
+            doDrive(-1, driveController.getRightX(), 0,
+           RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+        }
+        else if(driveController.povDownRight().getAsBoolean()){
+            doDrive(-1, driveController.getRightX(), 1,
+           RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+        }
+        else if(driveController.povRight().getAsBoolean()){
+            doDrive(0, driveController.getRightX(), 1,
+           RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+        }
+        else if(driveController.povUpRight().getAsBoolean()){
+            doDrive(1, driveController.getRightX(), 1,
+           RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+        }
+        else{
+            doDrive(0, driveController.getRightX(), 0, RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+        }
+        
 
         //mecanum bez odmocniny
         //doDrive(-1* driveController.getLeftY(), driveController.getRightX(), driveController.getLeftX(),

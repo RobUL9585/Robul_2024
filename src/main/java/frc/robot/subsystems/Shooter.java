@@ -68,16 +68,16 @@ public class Shooter extends SubsystemBase {
     public void CMDteleOp(CommandXboxController armController){
         
         if(armController.rightBumper().getAsBoolean()){
-            shooterHigher.set(Constants.ArmConstants.shooterSpeedFast);
-            shooterLower.set(Constants.ArmConstants.shooterSpeedFast);
+            shooterHigher.set(Constants.ArmConstants.shooterSpeedFastHigher);
+            shooterLower.set(Constants.ArmConstants.shooterSpeedFastLower);
         }
         else if(armController.povDown().getAsBoolean()){
             shooterHigher.set(Constants.ArmConstants.shooterSpeedIn);
             shooterLower.set(Constants.ArmConstants.shooterSpeedIn);
         }
         else if (armController.leftBumper().getAsBoolean()){
-            shooterHigher.set(Constants.ArmConstants.shooterSpeedSlow);
-            shooterLower.set(Constants.ArmConstants.shooterSpeedSlow);
+            shooterHigher.set(Constants.ArmConstants.shooterSpeedSlowHigher);
+            shooterLower.set(Constants.ArmConstants.shooterSpeedSlowLower);
         }
         else{
             shooterHigher.set(0);
