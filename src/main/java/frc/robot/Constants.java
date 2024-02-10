@@ -39,8 +39,8 @@ public class Constants {
 
           public static final double intakeSpeedUp = 0.25;
           public static final double intakeSpeedDown = -0.25;
-          public static final double intakeMaxPosition = 10000;
-         public static final double intakeMinPosition = -10000;
+          public static final double intakeMaxPosition = 0;
+         public static final double intakeMinPosition = -89;
 
           public static final int shooterLowerId = 8;
           public static final int shooterHigherId = 9;

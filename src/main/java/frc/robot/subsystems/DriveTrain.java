@@ -105,10 +105,11 @@ rightBack.burnFlash();
          //doDrive(-1* driveController.getLeftY(), driveController.getLeftX(), driveController.getRightTriggerAxis()*0.6);
 
         //mecanum drive
-        // doDrive(-1* driveController.getLeftY(), driveController.getRightX(), driveController.getLeftX(),
-        //    RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+         doDrive(-1* driveController.getLeftY(), driveController.getRightX(), driveController.getLeftX(),
+            RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
 
         //mechanum drive using pov (šipky)
+    /* 
         if(driveController.povUp().getAsBoolean()){
             doDrive(1, driveController.getRightX(), 0,
            RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
@@ -144,7 +145,7 @@ rightBack.burnFlash();
         else{
             doDrive(0, driveController.getRightX(), 0, RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
         }
-        
+        */
 
         //mecanum bez odmocniny
         //doDrive(-1* driveController.getLeftY(), driveController.getRightX(), driveController.getLeftX(),
