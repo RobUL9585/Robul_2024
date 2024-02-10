@@ -104,7 +104,9 @@ public class Intake extends SubsystemBase {
         }
  
     
-    
+    public double getPosition(){
+        return intakeLeft.getEncoder().getPosition() + intakeRight.getEncoder().getPosition() *0.5;
+    }
     @Override
     public void simulationPeriodic() {
         // This method will be called once per scheduler run when in simulation
