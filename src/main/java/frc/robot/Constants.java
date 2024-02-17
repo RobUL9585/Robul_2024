@@ -27,6 +27,10 @@ public class Constants {
           public static final int leftBackId = 2;
           public static final int rightFrontId = 3;
           public static final int rightBackId = 4;
+
+          //wheelDiameter je v metrech
+          public static final double wheelDiameter = 0.1524;
+          public static final double gearRatio = 0.2;
        
      }
     
@@ -50,7 +54,15 @@ public class Constants {
           public static final double shooterSpeedSlowLower = 0.20;
           public static final double shooterSpeedIn = -0.2;
 
+          public static final int climberLeftFrontId = 10;
+          public static final int climberLeftBackId = 11;
+          public static final int climberRightFrontId = 12;
+          public static final int climberRightBackId = 13;
 
+          public static final double climberSpeedUp = 0.15;
+          public static final double climberSpeedDown= -0.15;
+          //easteregg
+          public static final double climberSpeedHYPERDOWN = -1;
 
      }
     
