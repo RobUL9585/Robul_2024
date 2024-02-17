@@ -36,19 +36,19 @@ public class Climber extends SubsystemBase {
 
 
     public Climber() {
-        climberLeftBack = new CANSparkMax(Constants.ArmConstants.climberLeftBackId, MotorType.kBrushless);
+        climberLeftBack = new CANSparkMax(Constants.ArmConstants.climberLeftBackId, MotorType.kBrushed);
         climberLeftBack.setInverted(true);
         climberLeftBack.setIdleMode(IdleMode.kBrake);
 
-        climberLeftFront = new CANSparkMax(Constants.ArmConstants.climberLeftFrontId, MotorType.kBrushless);
-        climberLeftFront.setInverted(false);
+        climberLeftFront = new CANSparkMax(Constants.ArmConstants.climberLeftFrontId, MotorType.kBrushed);
+        climberLeftFront.setInverted(true);
         climberLeftFront.setIdleMode(IdleMode.kBrake);
 
-        climberRightFront = new CANSparkMax(Constants.ArmConstants.climberRightFrontId, MotorType.kBrushless);
+        climberRightFront = new CANSparkMax(Constants.ArmConstants.climberRightFrontId, MotorType.kBrushed);
         climberRightFront.setInverted(false);
         climberRightFront.setIdleMode(IdleMode.kBrake);
 
-        climberRightBack = new CANSparkMax(Constants.ArmConstants.climberRightBackId, MotorType.kBrushless);
+        climberRightBack = new CANSparkMax(Constants.ArmConstants.climberRightBackId, MotorType.kBrushed);
         climberRightBack.setInverted(false);
         climberRightBack.setIdleMode(IdleMode.kBrake);
     }
