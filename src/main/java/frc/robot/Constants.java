@@ -60,9 +60,13 @@ public class Constants {
 
           public static final double climberSpeedUp = 0.15;
           public static final double climberSpeedDown= -0.15;
-          //easteregg
+          
           public static final double climberSpeedHYPERDOWN = -1;
           public static final double climberSpeedHYPERUP = 1;
+
+          public static final double climberMaxPosition = 0;
+          public static final double climberMinPosition = -0;
+
 
      }
     

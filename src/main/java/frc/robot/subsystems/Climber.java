@@ -32,6 +32,9 @@ public class Climber extends SubsystemBase {
     private CANSparkMax climberLeft;
     private CANSparkMax climberRight;
 
+    private double climberLeftZeroOffset = 0;
+    private double climberRightZeroOffset = 0;
+
 
     public Climber() {
         climberLeft = new CANSparkMax(Constants.ArmConstants.climberLeftId, MotorType.kBrushless);
@@ -41,39 +44,61 @@ public class Climber extends SubsystemBase {
         climberRight = new CANSparkMax(Constants.ArmConstants.climberRightId, MotorType.kBrushless);
         climberRight.setInverted(true);
         climberRight.setIdleMode(IdleMode.kBrake);
+    
+        resetEncoderClimberLeft();
+        resetEncoderClimberRight();
+    }
+
+    public void resetEncoderClimberLeft(){
+        climberLeftZeroOffset = climberLeft.getEncoder().getPosition();
+    }
+    public void resetEncoderClimberRight(){
+        climberRightZeroOffset = climberRight.getEncoder().getPosition();
+    }
+
+    public double getPositionLeft(){
+
+        return climberLeft.getEncoder().getPosition() - climberLeftZeroOffset;
+
+    }
+
+    public double getPositionRight(){
+
+        return climberRight.getEncoder().getPosition() - climberRightZeroOffset;
+
     }
 
     public void CMDteleOp(CommandXboxController driveController){
-        if(driveController.a().getAsBoolean()){
-            climberRight.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
-        }
-        else if(driveController.y().getAsBoolean()){
-            climberRight.set(Constants.ArmConstants.climberSpeedHYPERUP);
-        }
-        else if(driveController.b().getAsBoolean()){
-            climberRight.set(Constants.ArmConstants.climberSpeedUp);       
-        }
-        else if(driveController.x().getAsBoolean()){
-            climberRight.set(Constants.ArmConstants.climberSpeedUp);       
-        }
-        else{
-            climberRight.set(0);    
-        }
-
-        if(driveController.povDown().getAsBoolean()){
+        if(driveController.a().getAsBoolean() && getPositionLeft() > Constants.ArmConstants.climberMinPosition){
             climberLeft.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
         }
-        else if(driveController.povUp().getAsBoolean()){
+        else if(driveController.y().getAsBoolean() && getPositionLeft() < Constants.ArmConstants.climberMaxPosition){
             climberLeft.set(Constants.ArmConstants.climberSpeedHYPERUP);
         }
-        else if(driveController.povRight().getAsBoolean()){
+        else if(driveController.b().getAsBoolean() && getPositionLeft() < Constants.ArmConstants.climberMaxPosition ){
             climberLeft.set(Constants.ArmConstants.climberSpeedUp);       
         }
-        else if(driveController.povLeft().getAsBoolean()){
-            climberLeft.set(Constants.ArmConstants.climberSpeedUp);       
+        else if(driveController.x().getAsBoolean() && getPositionLeft() > Constants.ArmConstants.climberMinPosition){
+            climberLeft.set(Constants.ArmConstants.climberSpeedDown);       
         }
         else{
             climberLeft.set(0);    
+        }
+
+        if(driveController.povDown().getAsBoolean() && getPositionRight() > Constants.ArmConstants.climberMinPosition){
+            climberRight.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
+        }
+        else if(driveController.povUp().getAsBoolean() && getPositionRight() < Constants.ArmConstants.climberMaxPosition){
+            climberRight.set(Constants.ArmConstants.climberSpeedHYPERUP);
+        }
+        else if(driveController.povRight().getAsBoolean() && getPositionRight() < Constants.ArmConstants.climberMaxPosition){
+            climberRight.set(Constants.ArmConstants.climberSpeedUp);       
+        }
+        else if(driveController.povLeft().getAsBoolean() && getPositionRight() > Constants.ArmConstants.climberMinPosition){
+            climberRight.set(Constants.ArmConstants.climberSpeedDown);       
+        }
+        else{
+            climberRight.set(0);    
         }
 
     }
