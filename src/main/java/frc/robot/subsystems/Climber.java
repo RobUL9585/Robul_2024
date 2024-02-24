@@ -29,50 +29,52 @@ import frc.robot.Constants;
  *
  */
 public class Climber extends SubsystemBase {
-    private CANSparkMax climberLeftBack;
-    private CANSparkMax climberLeftFront;
-    private CANSparkMax climberRightBack;
-    private CANSparkMax climberRightFront;
+    private CANSparkMax climberLeft;
+    private CANSparkMax climberRight;
 
 
     public Climber() {
-        climberLeftBack = new CANSparkMax(Constants.ArmConstants.climberLeftBackId, MotorType.kBrushed);
-        climberLeftBack.setInverted(true);
-        climberLeftBack.setIdleMode(IdleMode.kBrake);
+        climberLeft = new CANSparkMax(Constants.ArmConstants.climberLeftId, MotorType.kBrushless);
+        climberLeft.setInverted(false);
+        climberLeft.setIdleMode(IdleMode.kBrake);
 
-        climberLeftFront = new CANSparkMax(Constants.ArmConstants.climberLeftFrontId, MotorType.kBrushed);
-        climberLeftFront.setInverted(true);
-        climberLeftFront.setIdleMode(IdleMode.kBrake);
-
-        climberRightFront = new CANSparkMax(Constants.ArmConstants.climberRightFrontId, MotorType.kBrushed);
-        climberRightFront.setInverted(false);
-        climberRightFront.setIdleMode(IdleMode.kBrake);
-
-        climberRightBack = new CANSparkMax(Constants.ArmConstants.climberRightBackId, MotorType.kBrushed);
-        climberRightBack.setInverted(false);
-        climberRightBack.setIdleMode(IdleMode.kBrake);
+        climberRight = new CANSparkMax(Constants.ArmConstants.climberRightId, MotorType.kBrushless);
+        climberRight.setInverted(true);
+        climberRight.setIdleMode(IdleMode.kBrake);
     }
 
     public void CMDteleOp(CommandXboxController driveController){
         if(driveController.a().getAsBoolean()){
-            climberLeftBack.set(Constants.ArmConstants.climberSpeedDown);
-            climberLeftFront.set(Constants.ArmConstants.climberSpeedDown);
-            climberRightBack.set(Constants.ArmConstants.climberSpeedDown);
-            climberRightFront.set(Constants.ArmConstants.climberSpeedDown);
+            climberRight.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
         }
         else if(driveController.y().getAsBoolean()){
-            climberLeftBack.set(Constants.ArmConstants.climberSpeedUp);
-            climberLeftFront.set(Constants.ArmConstants.climberSpeedUp);
-            climberRightBack.set(Constants.ArmConstants.climberSpeedUp);
-            climberRightFront.set(Constants.ArmConstants.climberSpeedUp);
+            climberRight.set(Constants.ArmConstants.climberSpeedHYPERUP);
         }
         else if(driveController.b().getAsBoolean()){
-            climberLeftBack.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
-            climberLeftFront.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
-            climberRightBack.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
-            climberRightFront.set(Constants.ArmConstants.climberSpeedHYPERDOWN);       
+            climberRight.set(Constants.ArmConstants.climberSpeedUp);       
+        }
+        else if(driveController.x().getAsBoolean()){
+            climberRight.set(Constants.ArmConstants.climberSpeedUp);       
+        }
+        else{
+            climberRight.set(0);    
         }
 
+        if(driveController.povDown().getAsBoolean()){
+            climberLeft.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
+        }
+        else if(driveController.povUp().getAsBoolean()){
+            climberLeft.set(Constants.ArmConstants.climberSpeedHYPERUP);
+        }
+        else if(driveController.povRight().getAsBoolean()){
+            climberLeft.set(Constants.ArmConstants.climberSpeedUp);       
+        }
+        else if(driveController.povLeft().getAsBoolean()){
+            climberLeft.set(Constants.ArmConstants.climberSpeedUp);       
+        }
+        else{
+            climberLeft.set(0);    
+        }
 
     }
 

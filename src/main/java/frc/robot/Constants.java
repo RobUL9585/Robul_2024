@@ -35,16 +35,15 @@ public class Constants {
      }
     
      public static final class ArmConstants{
-          public static final int intakeLeftId = 5;
-          public static final int intakeRightId = 6;
-          public static final int intakeSpinId = 7;
+          public static final int intakeLiftId = 7;
+          public static final int intakeSpinId = 10;
           public static final double intakeSpinSpeedIn = 0.2;
           public static final double intakeSpinSpeedOut = -0.7;
 
           public static final double intakeSpeedUp = 0.25;
           public static final double intakeSpeedDown = -0.25;
           public static final double intakeMaxPosition = 0;
-         public static final double intakeMinPosition = -89;
+         public static final double intakeMinPosition = -74;
 
           public static final int shooterLowerId = 8;
           public static final int shooterHigherId = 9;
@@ -54,15 +53,14 @@ public class Constants {
           public static final double shooterSpeedSlowLower = 0.20;
           public static final double shooterSpeedIn = -0.2;
 
-          public static final int climberLeftFrontId = 10;
-          public static final int climberLeftBackId = 11;
-          public static final int climberRightFrontId = 12;
-          public static final int climberRightBackId = 13;
+          public static final int climberLeftId = 5;
+          public static final int climberRightId = 6;
 
           public static final double climberSpeedUp = 0.15;
           public static final double climberSpeedDown= -0.15;
           //easteregg
           public static final double climberSpeedHYPERDOWN = -1;
+          public static final double climberSpeedHYPERUP = 1;
 
      }
     
