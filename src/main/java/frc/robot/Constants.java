@@ -31,6 +31,8 @@ public class Constants {
           //wheelDiameter je v metrech
           public static final double wheelDiameter = 0.1524;
           public static final double gearRatio = 0.2;
+
+          public static final double driveForwardProportion = 0.025;
        
      }
     
