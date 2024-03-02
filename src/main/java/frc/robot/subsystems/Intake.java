@@ -76,7 +76,7 @@ public class Intake extends SubsystemBase {
     }
 
     public void setMotorsBrake(){
-        intakeLift.setIdleMode(IdleMode.kCoast);
+        intakeLift.setIdleMode(IdleMode.kBrake);
     }
     public void setMotorscoast(){
         intakeLift.setIdleMode(IdleMode.kCoast);

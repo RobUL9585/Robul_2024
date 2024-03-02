@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.SerialPort.Port;
 
 import com.kauailabs.navx.frc.AHRS;
 
@@ -12,7 +13,7 @@ public class Gyro extends SubsystemBase {
   private double softoffset = 0.0;
 
   public Gyro() {
-     navx = new AHRS(SPI.Port.kMXP);
+     navx = new AHRS(Port.kUSB1);
      resetNavx();
   }
 

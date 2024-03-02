@@ -87,6 +87,7 @@ public class Robot extends TimedRobot {
         }
 
         RobotContainer.getInstance().m_intake.setMotorsBrake();
+        RobotContainer.getInstance().m_gyro.resetNavx();
     }
 
     /**
@@ -105,7 +106,8 @@ public class Robot extends TimedRobot {
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
         }
-        //RobotContainer.getInstance().m_intake.setMotorsBrake();
+        RobotContainer.getInstance().m_intake.setMotorsBrake();
+        RobotContainer.getInstance().m_gyro.resetNavx();
     }
 
     /**

@@ -127,6 +127,7 @@ public CommandXboxController getcontrollerxboxController(int id) {
       SmartDashboard.putNumber("Arm position", m_intake.getPosition());
       SmartDashboard.putNumber("Left-climber position", m_climber.getPositionLeft());
       SmartDashboard.putNumber("Right-climber position", m_climber.getPositionRight());
+      SmartDashboard.putNumber("Gyro Normalized angle", m_gyro.getNormaliziedNavxAngle());
 
     }
 
