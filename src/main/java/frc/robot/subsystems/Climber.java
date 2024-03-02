@@ -34,7 +34,7 @@ public class Climber extends SubsystemBase {
 
     private double climberLeftZeroOffset = 0;
     private double climberRightZeroOffset = 0;
-
+    private boolean limit = true;
 
     public Climber() {
         climberLeft = new CANSparkMax(Constants.ArmConstants.climberLeftId, MotorType.kBrushless);
@@ -67,8 +67,17 @@ public class Climber extends SubsystemBase {
         return climberRight.getEncoder().getPosition() - climberRightZeroOffset;
 
     }
+    public void disableLimit(){
+        limit = false;
 
+    }
+    public void enableLimit(){
+        limit = true;
+
+    }
     public void CMDteleOp(CommandXboxController driveController){
+        if(limit){
+
         if(driveController.a().getAsBoolean() && getPositionLeft() > Constants.ArmConstants.climberMinPosition){
             climberLeft.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
         }
@@ -101,8 +110,43 @@ public class Climber extends SubsystemBase {
             climberRight.set(0);    
         }
 
-    }
+    } 
 
+    else{
+    if(driveController.a().getAsBoolean()){
+            climberLeft.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
+        }
+        else if(driveController.y().getAsBoolean()){
+            climberLeft.set(Constants.ArmConstants.climberSpeedHYPERUP);
+        }
+        else if(driveController.b().getAsBoolean()){
+            climberLeft.set(Constants.ArmConstants.climberSpeedUp);       
+        }
+        else if(driveController.x().getAsBoolean()){
+            climberLeft.set(Constants.ArmConstants.climberSpeedDown);       
+        }
+        else{
+            climberLeft.set(0);    
+        }
+
+        if(driveController.povDown().getAsBoolean()){
+            climberRight.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
+        }
+        else if(driveController.povUp().getAsBoolean()){
+            climberRight.set(Constants.ArmConstants.climberSpeedHYPERUP);
+        }
+        else if(driveController.povRight().getAsBoolean()){
+            climberRight.set(Constants.ArmConstants.climberSpeedUp);       
+        }
+        else if(driveController.povLeft().getAsBoolean()){
+            climberRight.set(Constants.ArmConstants.climberSpeedDown);       
+        }
+        else{
+            climberRight.set(0);    
+        }
+    
+    }
+    }
     @Override
     public void periodic() {
         // This method will be called once per scheduler run

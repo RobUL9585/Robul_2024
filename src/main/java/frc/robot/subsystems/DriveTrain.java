@@ -251,7 +251,7 @@ resetMotorEncoders();
     }
 
 
-    private void resetMotorEncoders(){
+    public void resetMotorEncoders(){
     leftBackZeroOffset = leftBack.getEncoder().getPosition();
     leftFrontZeroOffset = leftFront.getEncoder().getPosition();
     rightBackZeroOffset = rightBack.getEncoder().getPosition();
@@ -272,11 +272,7 @@ resetMotorEncoders();
 
 
     }
-
-
-
-    
-    private void driveForwardStraight(){
+    public void driveForwardStraight(){
         if(getDistanceForward() >= driveForwardDistance){
             bDone = true;
         }
@@ -290,7 +286,7 @@ resetMotorEncoders();
 
     }
 
-    private double getDistanceForward(){
+    public double getDistanceForward(){
         double offsetAvg = (leftBackZeroOffset + leftFrontZeroOffset + rightBackZeroOffset + rightFrontZeroOffset) * 0.25;
         double encoderAvg = (leftBack.getEncoder().getPosition() + leftFront.getEncoder().getPosition() + rightBack.getEncoder().getPosition() + rightFront.getEncoder().getPosition()) * 0.25;
         double motorRotsAvg = encoderAvg - offsetAvg;
