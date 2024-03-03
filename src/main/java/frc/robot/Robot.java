@@ -18,7 +18,6 @@ import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.Climber;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -42,9 +41,9 @@ public class Robot extends TimedRobot {
         // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
         // autonomous chooser on the dashboard.
         m_robotContainer = RobotContainer.getInstance();
-        RobotContainer.getInstance().m_climber.enableLimit();
         HAL.report(tResourceType.kResourceType_Framework, tInstances.kFramework_RobotBuilder);
         //RobotContainer.getInstance().m_intake.setMotorsBrake();
+        RobotContainer.getInstance().m_climber.enableLimit();
     }
 
     /**
@@ -91,6 +90,8 @@ public class Robot extends TimedRobot {
 
         RobotContainer.getInstance().m_intake.setMotorsBrake();
         RobotContainer.getInstance().m_gyro.resetNavx();
+        RobotContainer.getInstance().m_intake.resetEncoder();
+
     }
 
     /**
@@ -98,11 +99,12 @@ public class Robot extends TimedRobot {
     */
     @Override
     public void autonomousPeriodic() {
+        RobotContainer.getInstance().updateSmartDashboard();
     }
 
     @Override
     public void teleopInit() {
-        RobotContainer.getInstance().m_climber.enableLimit();
+  
 
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
@@ -111,6 +113,8 @@ public class Robot extends TimedRobot {
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
         }
+        RobotContainer.getInstance().m_climber.enableLimit();
+        RobotContainer.getInstance().m_intake.resetEncoder();
         RobotContainer.getInstance().m_intake.setMotorsBrake();
         RobotContainer.getInstance().m_gyro.resetNavx();
     }
@@ -125,7 +129,7 @@ public class Robot extends TimedRobot {
         RobotContainer.getInstance().m_shooter.CMDteleOp(RobotContainer.getInstance().getArmController());
         RobotContainer.getInstance().m_climber.CMDteleOp(RobotContainer.getInstance().getDriveController());
         RobotContainer.getInstance().updateSmartDashboard();
-
+        
     }
 
     @Override
@@ -133,6 +137,8 @@ public class Robot extends TimedRobot {
         // Cancels all running commands at the start of test mode.
         CommandScheduler.getInstance().cancelAll();
         RobotContainer.getInstance().m_climber.disableLimit();
+        RobotContainer.getInstance().m_intake.resetEncoder();
+
     }
 
     /**

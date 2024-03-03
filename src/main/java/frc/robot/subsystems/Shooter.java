@@ -65,6 +65,15 @@ public class Shooter extends SubsystemBase {
 
     }
 
+    public void autonShoot(double shooterHigherSpeed, double shooterLowerSpeed){
+        shooterHigher.set(shooterHigherSpeed);
+        shooterLower.set(shooterLowerSpeed);
+    }
+    public void autonShootStop(){
+        shooterHigher.set(0);
+        shooterLower.set(0);
+    }
+
     public void CMDteleOp(CommandXboxController armController){
         
         if(armController.rightBumper().getAsBoolean()){

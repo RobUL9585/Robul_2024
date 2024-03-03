@@ -32,19 +32,19 @@ public class Constants {
           public static final double wheelDiameter = 0.1524;
           public static final double gearRatio = 0.2;
 
-          public static final double driveForwardProportion = 0.025;
+          public static final double driveForwardProportion = 0.01;
        
      }
     
      public static final class ArmConstants{
           public static final int intakeLiftId = 7;
           public static final int intakeSpinId = 10;
-          public static final double intakeSpinSpeedIn = 0.2;
+          public static final double intakeSpinSpeedIn = 0.3;
           public static final double intakeSpinSpeedOut = -0.7;
 
           public static final double intakeSpeedUp = 0.25;
           public static final double intakeSpeedDown = -0.25;
-          public static final double intakeMaxPosition = 0;
+          public static final double intakeMaxPosition = -3;
          public static final double intakeMinPosition = -74;
 
           public static final int shooterLowerId = 8;
@@ -64,8 +64,8 @@ public class Constants {
           public static final double climberSpeedHYPERDOWN = -1;
           public static final double climberSpeedHYPERUP = 1;
 
-          public static final double climberMaxPosition = 0;
-          public static final double climberMinPosition = -999;
+          public static final double climberMaxPosition = -10;
+          public static final double climberMinPosition = -700;
 
 
      }

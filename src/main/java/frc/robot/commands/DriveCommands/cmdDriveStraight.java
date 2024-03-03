@@ -24,7 +24,7 @@ public class cmdDriveStraight extends CommandBase {
 
         targetPosition = targetDistance;
         power = speed;
-        targetHeading = RobotContainer.getInstance().m_gyro.getNormaliziedNavxAngle();
+        targetHeading = 0; //RobotContainer.getInstance().m_gyro.getNormaliziedNavxAngle();
 
 
         // m_subsystem = subsystem;
@@ -62,7 +62,7 @@ public class cmdDriveStraight extends CommandBase {
        // double headingDelta = 0;
         
         RobotContainer.getInstance().m_driveTrain.doDrive(power, 0, headingDelta, 1);
-        if (RobotContainer.getInstance().m_driveTrain.getDistanceForward() >= targetPosition  ) {
+        if (Math.abs(RobotContainer.getInstance().m_driveTrain.getDistanceForward()) >= targetPosition  ) {
             bDone = true;
             // end(false);
             RobotContainer.getInstance().m_driveTrain.stopDrive();

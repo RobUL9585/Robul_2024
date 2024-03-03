@@ -202,6 +202,13 @@ resetMotorEncoders();
         setMotorPowers();
     }
 
+ public void setMotorsBrake(){
+    leftBack.setIdleMode(IdleMode.kBrake);
+    leftFront.setIdleMode(IdleMode.kBrake);
+    rightBack.setIdleMode(IdleMode.kBrake);
+    rightFront.setIdleMode(IdleMode.kBrake);
+
+ }
 
     public double getMaxMotorPower(){
         double maxValue = -5;

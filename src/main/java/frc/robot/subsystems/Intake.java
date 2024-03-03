@@ -16,6 +16,9 @@ package frc.robot.subsystems;
 import frc.robot.commands.*;
 
 import com.revrobotics.CANSparkBase.IdleMode;
+
+import javax.print.DocFlavor.STRING;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -81,6 +84,16 @@ public class Intake extends SubsystemBase {
     public void setMotorscoast(){
         intakeLift.setIdleMode(IdleMode.kCoast);
     }
+    public String getMotorMode(){
+        if(intakeLift.getIdleMode() == IdleMode.kBrake){
+            return "kBrake";
+        }
+        else if(intakeLift.getIdleMode() == IdleMode.kCoast){
+            return "kCoast";
+        }
+        return "undefined";
+    }
+
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
@@ -136,7 +149,15 @@ public class Intake extends SubsystemBase {
  
  */
 
-        
+    public void autonSpin(double speed){
+        intakeSpin.set(speed);
+    }
+    public void autonSpinStop(){
+        intakeSpin.set(0);
+    }
+    public void autonLiftArm(double speed){
+        intakeLift.set(speed);
+    }
     
     public void gotoPositionIn(){
         if(getPosition() < Constants.ArmConstants.intakeMaxPosition -1){
