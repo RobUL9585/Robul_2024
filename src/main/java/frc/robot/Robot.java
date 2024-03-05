@@ -135,6 +135,8 @@ public class Robot extends TimedRobot {
     @Override
     public void testInit() {
         // Cancels all running commands at the start of test mode.
+        RobotContainer.getInstance().m_climber.resetEncoderClimberLeft();
+        RobotContainer.getInstance().m_climber.resetEncoderClimberRight();
         CommandScheduler.getInstance().cancelAll();
         RobotContainer.getInstance().m_climber.disableLimit();
         RobotContainer.getInstance().m_intake.resetEncoder();

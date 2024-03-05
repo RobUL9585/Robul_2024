@@ -11,7 +11,7 @@ import frc.robot.Constants.DriveConstants;
 /**
  *
  */
-public class cmdDriveStraight extends CommandBase {
+public class cmdDriveStraightRamped extends CommandBase {
     private double targetPosition = 0; // meters
     private double initialPower = 0.15;
     private double power;
@@ -22,10 +22,10 @@ public class cmdDriveStraight extends CommandBase {
 
     
 
-    public cmdDriveStraight(double targetDistance, double speed) {
+    public cmdDriveStraightRamped(double targetDistance, double speed) {
 
         targetPosition = targetDistance;
-        power = speed;
+        initialPower = speed;
         targetHeading = 0; //RobotContainer.getInstance().m_gyro.getNormaliziedNavxAngle();
 
 
@@ -34,10 +34,10 @@ public class cmdDriveStraight extends CommandBase {
     }
 
 
-    public cmdDriveStraight(double targetDistance, double speed, double heading) {
+    public cmdDriveStraightRamped(double targetDistance, double speed, double heading) {
 
         targetPosition = targetDistance;
-        power = speed;
+        initialPower = speed;
         targetHeading = heading;
 
 
@@ -62,15 +62,23 @@ public class cmdDriveStraight extends CommandBase {
                 targetHeading,DriveConstants.driveForwardProportion);
         
        // double headingDelta = 0;
+       if(Math.abs(RobotContainer.getInstance().m_driveTrain.getDistanceForward()) < Math.abs(targetPosition)){
+        if(Math.abs(RobotContainer.getInstance().m_driveTrain.getDistanceForward()/targetPosition)<0.2){
+            power = initialPower*(9*Math.abs(RobotContainer.getInstance().m_driveTrain.getDistanceForward()/targetPosition)+0.1);
+        }
+        else{
+        
+       power = Math.sqrt(1-Math.abs(RobotContainer.getInstance().m_driveTrain.getDistanceForward()/targetPosition)) * initialPower;
+        }
+    }
         RobotContainer.getInstance().m_driveTrain.doDrive(power, 0, headingDelta, 1);
         if (Math.abs(RobotContainer.getInstance().m_driveTrain.getDistanceForward()) >= targetPosition  ) {
             bDone = true;
             // end(false);
             RobotContainer.getInstance().m_driveTrain.stopDrive();
+
         }
-
     }
-
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
