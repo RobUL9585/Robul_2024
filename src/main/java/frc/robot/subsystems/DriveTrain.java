@@ -50,6 +50,9 @@ private double rightFrontZeroOffset;
 private double rightBackZeroOffset;
 
 
+public boolean isRychly = false;
+
+
 
 private double rightFrontPower = 0;
 private double rightBackPower = 0;
@@ -109,8 +112,17 @@ resetMotorEncoders();
          //doDrive(-1* driveController.getLeftY(), driveController.getLeftX(), driveController.getRightTriggerAxis()*0.6);
 
         //mecanum drive
+        /*if(driveController.leftBumper().getAsBoolean()){
+            isRychly = true;
+ doDrive(-1* driveController.getLeftY(), driveController.getRightX(), driveController.getLeftX(),
+            RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.superHyperMaxSpeed);
+        }
+        else{
+            */
+        isRychly = false;
          doDrive(-1* driveController.getLeftY(), driveController.getRightX(), driveController.getLeftX(),
             RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);
+        //}
         if(!bDone){
             driveForwardStraight();
         }
@@ -256,6 +268,7 @@ resetMotorEncoders();
         // This method will be called once per scheduler run when in simulation
 
     }
+    
 
 
     public void resetMotorEncoders(){

@@ -44,6 +44,7 @@ public class Robot extends TimedRobot {
         HAL.report(tResourceType.kResourceType_Framework, tInstances.kFramework_RobotBuilder);
         //RobotContainer.getInstance().m_intake.setMotorsBrake();
         RobotContainer.getInstance().m_climber.enableLimit();
+        RobotContainer.getInstance().m_intake.resetEncoder();
     }
 
     /**
@@ -113,8 +114,11 @@ public class Robot extends TimedRobot {
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
         }
+        RobotContainer.getInstance().m_intake.a_pressed = false;
+        RobotContainer.getInstance().m_intake.b_pressed = false;
+        RobotContainer.getInstance().m_intake.x_pressed = false;
+        RobotContainer.getInstance().m_intake.y_pressed = false;
         RobotContainer.getInstance().m_climber.enableLimit();
-        RobotContainer.getInstance().m_intake.resetEncoder();
         RobotContainer.getInstance().m_intake.setMotorsBrake();
         RobotContainer.getInstance().m_gyro.resetNavx();
     }
@@ -135,6 +139,8 @@ public class Robot extends TimedRobot {
     @Override
     public void testInit() {
         // Cancels all running commands at the start of test mode.
+        RobotContainer.getInstance().m_climber.resetEncoderClimberLeft();
+        RobotContainer.getInstance().m_climber.resetEncoderClimberRight();
         CommandScheduler.getInstance().cancelAll();
         RobotContainer.getInstance().m_climber.disableLimit();
         RobotContainer.getInstance().m_intake.resetEncoder();

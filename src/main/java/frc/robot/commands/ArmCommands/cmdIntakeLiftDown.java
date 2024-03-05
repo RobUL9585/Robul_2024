@@ -5,22 +5,25 @@ import frc.robot.RobotContainer;
 
 public class cmdIntakeLiftDown extends CommandBase {
     private boolean bDone = false;
+    private boolean bWait = false;
     private double speed;
-    private double targetPosition;
     public cmdIntakeLiftDown(double speed) {
         this.speed = speed;
         // m_subsystem = subsystem;
         // addRequirements(m_subsystem);
 
     }
-    // if fixedDist = false => stagPosition is suposed to recieve the percantage to
-    // be traversed in stag, in 0.xx format
 
-    // Called when the command is initially scheduled.
+    public cmdIntakeLiftDown(double speed, boolean bWait){
+        this.speed = speed;
+        this.bWait = bWait;
+    }
+
+    // Called when the command is initially scheduled. 
     @Override
     public void initialize() {
         bDone = false;
-         RobotContainer.getInstance().m_intake.autonLiftArm(-Math.abs(speed));
+         RobotContainer.getInstance().m_intake.a_pressed = true;
         
 
     }
@@ -28,11 +31,14 @@ public class cmdIntakeLiftDown extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-    if(RobotContainer.getInstance().m_intake.getPosition() <= Constants.ArmConstants.intakeMinPosition){
-        bDone = true;
+    if(bWait){
+        if(RobotContainer.getInstance().m_intake.getPosition() <= Constants.ArmConstants.intakeMinPosition){
+            bDone = true;
+        }
     }
-
-        
+    else{
+        bDone = true;
+    } 
     }
 
     // Called once the command ends or is interrupted.

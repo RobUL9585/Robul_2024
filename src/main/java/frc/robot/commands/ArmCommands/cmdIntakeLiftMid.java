@@ -3,18 +3,17 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class cmdIntakeLiftUp extends CommandBase {
+public class cmdIntakeLiftMid extends CommandBase {
     private boolean bDone = false;
     private boolean bWait = false;
     private double speed;
-    public cmdIntakeLiftUp(double speed) {
-        this.speed = speed;
+    public cmdIntakeLiftMid() {
         // m_subsystem = subsystem;
         // addRequirements(m_subsystem);
 
     }
 
-    public cmdIntakeLiftUp(double speed, boolean bWait) {
+    public cmdIntakeLiftMid(double speed, boolean bWait) {
         this.speed = speed;
         this.bWait = bWait;
         // m_subsystem = subsystem;
@@ -26,7 +25,7 @@ public class cmdIntakeLiftUp extends CommandBase {
     @Override
     public void initialize() {
         bDone = false;
-        RobotContainer.getInstance().m_intake.y_pressed = true;
+        RobotContainer.getInstance().m_intake.povLeft_pressed = true;
 
     }
 
@@ -34,7 +33,7 @@ public class cmdIntakeLiftUp extends CommandBase {
     @Override
     public void execute() {
     if(bWait){
-        if(RobotContainer.getInstance().m_intake.getPosition() >= Constants.ArmConstants.intakeMaxPosition){
+        if(!RobotContainer.getInstance().m_intake.povLeft_pressed){
             bDone = true;
         }
     }
