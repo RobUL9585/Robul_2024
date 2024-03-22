@@ -43,6 +43,9 @@ public class AutonTest2MoveForwardTurn extends SequentialCommandGroup {
         addCommands(new cmdResetGyro());
         addCommands(new cmdDriveStraight(0.9, -0.150,0));
         addCommands(new cmdDelay(0.3));
+        addCommands(new cmdResetGyro());
+        addCommands(new cmdDriveStraight(0.9, -0.150,0));
+        addCommands(new cmdIntakeLiftDown(Constants.ArmConstants.intakeSpeedDown));
         addCommands(new cmdSpinIntake(Constants.ArmConstants.intakeSpinSpeedIn));
         addCommands(new cmdResetGyro());
         addCommands(new cmdDriveStraight(0.5, -0.1));
