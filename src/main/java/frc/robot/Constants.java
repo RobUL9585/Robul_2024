@@ -22,7 +22,7 @@ package frc.robot;
 public class Constants {
    
      public static final class DriveConstants {
-          public static final double superHyperMaxSpeed = 0.8;
+          public static final double superHyperMaxSpeed = 0.85;
           public static final double maxSpeed = 0.5;
           public static final int leftFrontId = 1;
           public static final int leftBackId = 2;
@@ -53,8 +53,8 @@ public class Constants {
           public static final int shooterHigherId = 9;
           public static final double shooterSpeedFastHigher = 0.8;
           public static final double shooterSpeedFastLower = 0.85;
-          public static final double shooterSpeedSlowHigher = 0.17;
-          public static final double shooterSpeedSlowLower = 0.20;
+          public static final double shooterSpeedSlowHigher = 0.18;
+          public static final double shooterSpeedSlowLower = 0.21;
           public static final double shooterSpeedIn = -0.2;
 
           public static final int climberLeftId = 6;
