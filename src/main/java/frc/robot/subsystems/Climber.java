@@ -94,10 +94,10 @@ public class Climber extends SubsystemBase {
             climberLeft.set(0);    
         }
 
-        if(driveController.povDown().getAsBoolean() && getPositionRight() > Constants.ArmConstants.climberMinPosition){
+        if((driveController.povDown().getAsBoolean() || driveController.povDownLeft().getAsBoolean() || driveController.povDownRight().getAsBoolean()) && getPositionRight() > Constants.ArmConstants.climberMinPosition){
             climberRight.set(Constants.ArmConstants.climberSpeedHYPERDOWN);
         }
-        else if(driveController.povUp().getAsBoolean() && getPositionRight() < Constants.ArmConstants.climberMaxPosition){
+        else if((driveController.povUp().getAsBoolean() || driveController.povUpLeft().getAsBoolean() || driveController.povUpRight().getAsBoolean()) && getPositionRight() < Constants.ArmConstants.climberMaxPosition){
             climberRight.set(Constants.ArmConstants.climberSpeedHYPERUP);
         }
         else if(driveController.povRight().getAsBoolean() && getPositionRight() < Constants.ArmConstants.climberMaxPosition){

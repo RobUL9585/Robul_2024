@@ -88,6 +88,10 @@ public class Shooter extends SubsystemBase {
             shooterHigher.set(Constants.ArmConstants.shooterSpeedSlowHigher);
             shooterLower.set(Constants.ArmConstants.shooterSpeedSlowLower);
         }
+        else if(armController.povRight().getAsBoolean()){
+            shooterHigher.set(1);
+            shooterLower.set(1);    
+        }
         else{
             shooterHigher.set(0);
             shooterLower.set(0);
