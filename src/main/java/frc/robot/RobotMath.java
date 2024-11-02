@@ -13,7 +13,7 @@ public class RobotMath {
 
     public static double headingDelta(double currentHeading, double targetHeading) {
         double headingDelta = 0;
-        double invertedHeadingDelta = 0;
+        double invertedHeadingDelta;
 
         //Positive value
         if (currentHeading >= 0 && targetHeading >= 0) {
@@ -47,11 +47,8 @@ public class RobotMath {
     }
 
     public static double calcTurnRate(double currentHeading, double targetHeading, double proportion) {
-
         double headingDelta = headingDelta(currentHeading, targetHeading);
-
-        double commandedTurnRate = headingDelta * proportion;
-        return commandedTurnRate;
+        return headingDelta * proportion;
     }
 
 }

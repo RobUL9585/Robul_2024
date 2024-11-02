@@ -11,12 +11,7 @@ public class CmdShoot extends Command {
     public CmdShoot(double shooterHigherSpeed, double shooterLowerSpeed) {
         this.shooterHigherSpeed = shooterHigherSpeed;
         this.shooterLowerSpeed = shooterLowerSpeed;
-        // m_subsystem = subsystem;
-        // addRequirements(m_subsystem);
-
     }
-    // if fixedDist = false => stagPosition is suposed to recieve the percantage to
-    // be traversed in stag, in 0.xx format
 
     @Override
     public void initialize() {
@@ -27,7 +22,6 @@ public class CmdShoot extends Command {
     @Override
     public void execute() {
         bDone = true;
-
     }
 
     @Override
@@ -43,6 +37,5 @@ public class CmdShoot extends Command {
     @Override
     public boolean runsWhenDisabled() {
         return false;
-
     }
 }

@@ -6,20 +6,10 @@ import frc.robot.RobotContainer;
 public class CmdSpinIntakeStop extends Command {
     private boolean bDone = false;
 
-    public CmdSpinIntakeStop() {
-
-        // m_subsystem = subsystem;
-        // addRequirements(m_subsystem);
-
-    }
-    // if fixedDist = false => stagPosition is suposed to recieve the percantage to
-    // be traversed in stag, in 0.xx format
-
     @Override
     public void initialize() {
         bDone = false;
         RobotContainer.getInstance().intake.autonSpinStop();
-
     }
 
     @Override

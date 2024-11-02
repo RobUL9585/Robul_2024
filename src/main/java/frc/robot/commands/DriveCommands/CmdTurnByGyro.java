@@ -5,8 +5,8 @@ import frc.robot.RobotContainer;
 
 public class CmdTurnByGyro extends Command {
     private final boolean clockwise;
-    private double power = 0;
-    private double targetHeading = 0;
+    private final double power;
+    private final double targetHeading;
     private boolean bDone = false;
 
     public CmdTurnByGyro(double targetHeading, double speed, boolean clockwise) {

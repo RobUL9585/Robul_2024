@@ -11,17 +11,11 @@ public class CmdIntakeLiftUp extends Command {
 
     public CmdIntakeLiftUp(double speed) {
         this.speed = speed;
-        // m_subsystem = subsystem;
-        // addRequirements(m_subsystem);
-
     }
 
     public CmdIntakeLiftUp(double speed, boolean bWait) {
         this.speed = speed;
         this.bWait = bWait;
-        // m_subsystem = subsystem;
-        // addRequirements(m_subsystem);
-
     }
 
     @Override

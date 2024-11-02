@@ -11,8 +11,14 @@ public class CmdDriveStraight extends Command {
     private final double power;
     private final double overshootValue = 0;
     private final CANSparkMax.IdleMode idleMode = CANSparkMax.IdleMode.kBrake;
-    private double targetPosition = 0; // meters
-    private double targetHeading = 0;
+    /**
+     * in meters
+     */
+    private final double targetPosition;
+    /**
+     * in meters
+     */
+    private final double targetHeading;
     private boolean bDone = false;
 
     public CmdDriveStraight(double targetDistance, double speed) {

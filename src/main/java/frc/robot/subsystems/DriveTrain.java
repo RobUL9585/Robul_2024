@@ -9,12 +9,11 @@ import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMath;
 
-@SuppressWarnings("unused")
 public class DriveTrain extends SubsystemBase {
-    public CANSparkMax leftFront;
-    public CANSparkMax leftBack;
-    public CANSparkMax rightFront;
-    public CANSparkMax rightBack;
+    public final CANSparkMax leftFront;
+    public final CANSparkMax leftBack;
+    public final CANSparkMax rightFront;
+    public final CANSparkMax rightBack;
     public boolean isFast = false;
     private double leftFrontZeroOffset;
     private double leftBackZeroOffset;
@@ -75,7 +74,7 @@ public class DriveTrain extends SubsystemBase {
                 driveForwardStraight();
             }
             //mechanum drive using pov (šipky)
-    /* 
+    /*
         if(driveController.povUp().getAsBoolean()){
             doDrive(1, driveController.getRightX(), 0,
            RobotMath.getSqRtValue(driveController.getRightTriggerAxis())*Constants.DriveConstants.maxSpeed);

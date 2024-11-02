@@ -5,10 +5,10 @@ import frc.robot.RobotMath;
 
 public class CmdDelay extends Command {
 
-    public boolean bdone = false;
+    public final double delayTime;
+    public boolean bDone = false;
     public double startTime = 0;
     public double endTime = 0;
-    public double delayTime = 0;
 
     public CmdDelay(double seconds) {
         delayTime = seconds;
@@ -16,7 +16,7 @@ public class CmdDelay extends Command {
 
     @Override
     public void initialize() {
-        bdone = false;
+        bDone = false;
         startTime = RobotMath.getTime();
         endTime = startTime + delayTime;
         System.err.println("Delay for a bit");
@@ -26,18 +26,18 @@ public class CmdDelay extends Command {
     public void execute() {
 
         if (RobotMath.getTime() >= endTime) {
-            bdone = true;
+            bDone = true;
         }
     }
 
     @Override
     public void end(boolean interrupted) {
-        bdone = true;
+        bDone = true;
     }
 
     @Override
     public boolean isFinished() {
-        return bdone;
+        return bDone;
     }
 
     @Override

@@ -40,7 +40,7 @@ public class RobotContainer {
     private final CommandXboxController driveController = new CommandXboxController(0);
     private final CommandXboxController armController = new CommandXboxController(1);
     // A chooser for autonomous commands
-    SendableChooser<Command> chooser = new SendableChooser<>();
+    private final SendableChooser<Command> chooser = new SendableChooser<>();
 
     /**
      * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -85,7 +85,7 @@ public class RobotContainer {
     private void configureButtonBindings() {
     }
 
-    public CommandXboxController getcontrollerxboxController(int id) {
+    public CommandXboxController getControllerXboxController(int id) {
         if (id == 1) {
             return driveController;
         }

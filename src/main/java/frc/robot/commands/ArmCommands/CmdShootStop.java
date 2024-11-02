@@ -6,14 +6,6 @@ import frc.robot.RobotContainer;
 public class CmdShootStop extends Command {
     private boolean bDone = false;
 
-    public CmdShootStop() {
-        // m_subsystem = subsystem;
-        // addRequirements(m_subsystem);
-
-    }
-    // if fixedDist = false => stagPosition is suposed to recieve the percantage to
-    // be traversed in stag, in 0.xx format
-
     @Override
     public void initialize() {
         bDone = false;
@@ -23,7 +15,6 @@ public class CmdShootStop extends Command {
     @Override
     public void execute() {
         bDone = true;
-
     }
 
     @Override
@@ -39,6 +30,5 @@ public class CmdShootStop extends Command {
     @Override
     public boolean runsWhenDisabled() {
         return false;
-
     }
 }

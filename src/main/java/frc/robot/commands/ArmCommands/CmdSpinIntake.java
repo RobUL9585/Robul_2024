@@ -9,24 +9,17 @@ public class CmdSpinIntake extends Command {
 
     public CmdSpinIntake(double speed) {
         this.speed = speed;
-        // m_subsystem = subsystem;
-        // addRequirements(m_subsystem);
-
     }
-    // if fixedDist = false => stagPosition is suposed to recieve the percantage to
-    // be traversed in stag, in 0.xx format
 
     @Override
     public void initialize() {
         bDone = false;
         RobotContainer.getInstance().intake.autonSpin(speed);
-
     }
 
     @Override
     public void execute() {
         bDone = true;
-
     }
 
     @Override

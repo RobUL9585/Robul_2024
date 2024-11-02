@@ -6,10 +6,10 @@ import frc.robot.RobotContainer;
 import frc.robot.RobotMath;
 
 public class CmdDriveStraightRamped extends Command {
-    private double targetPosition = 0; // meters
-    private double initialPower = 0.15;
+    private final double targetPosition; // meters
+    private final double initialPower;
+    private final double targetHeading;
     private double power;
-    private double targetHeading = 0;
     private boolean bDone = false;
 
     public CmdDriveStraightRamped(double targetDistance, double speed) {
