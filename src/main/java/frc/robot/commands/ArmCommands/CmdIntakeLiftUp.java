@@ -1,20 +1,22 @@
 package frc.robot.commands.ArmCommands;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
-public class cmdIntakeLiftUp extends CommandBase {
+public class CmdIntakeLiftUp extends Command {
+    private final double speed;
     private boolean bDone = false;
     private boolean bWait = false;
-    private double speed;
-    public cmdIntakeLiftUp(double speed) {
+
+    public CmdIntakeLiftUp(double speed) {
         this.speed = speed;
         // m_subsystem = subsystem;
         // addRequirements(m_subsystem);
 
     }
 
-    public cmdIntakeLiftUp(double speed, boolean bWait) {
+    public CmdIntakeLiftUp(double speed, boolean bWait) {
         this.speed = speed;
         this.bWait = bWait;
         // m_subsystem = subsystem;
@@ -22,35 +24,30 @@ public class cmdIntakeLiftUp extends CommandBase {
 
     }
 
-    // Called when the command is initially scheduled.
     @Override
     public void initialize() {
         bDone = false;
-        RobotContainer.getInstance().m_intake.y_pressed = true;
+        RobotContainer.getInstance().intake.yPressed = true;
 
     }
 
-    // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-    if(bWait){
-        if(RobotContainer.getInstance().m_intake.getPosition() >= Constants.ArmConstants.intakeMaxPosition){
+        if (bWait) {
+            if (RobotContainer.getInstance().intake.getPosition() >= Constants.ArmConstants.intakeMaxPosition) {
+                bDone = true;
+            }
+        } else {
             bDone = true;
         }
     }
-    else{
-        bDone = true;
-    }    
-    }
 
-    // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
         bDone = true;
-        RobotContainer.getInstance().m_intake.autonLiftArm(0);
+        RobotContainer.getInstance().intake.autonLiftArm(0);
     }
 
-    // Returns true when the command should end.
     @Override
     public boolean isFinished() {
         return bDone;

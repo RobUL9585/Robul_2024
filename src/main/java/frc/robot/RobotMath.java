@@ -1,59 +1,57 @@
 package frc.robot;
 
 public class RobotMath {
-	public static double getTime() {     
-		return (System.nanoTime() / Math.pow(10, 9));
-	}
+    public static double getTime() {
+        return (System.nanoTime() / Math.pow(10, 9));
+    }
 
-    public static double getSqRtValue(double input){
-        if(input != Math.abs(input)){
-            return -1* Math.sqrt(Math.abs(input));
-        }
-        
+    public static double getSqRtValue(double input) {
+        if (input != Math.abs(input)) return -1 * Math.sqrt(Math.abs(input));
+
         return Math.sqrt(Math.abs(input));
     }
 
     public static double headingDelta(double currentHeading, double targetHeading) {
-		double headingDelta = 0;
-		double invertedHeadingDelta = 0;
-		
-		 //Positive value
+        double headingDelta = 0;
+        double invertedHeadingDelta = 0;
+
+        //Positive value
         if (currentHeading >= 0 && targetHeading >= 0) {
             headingDelta = targetHeading - currentHeading;
         }
         // one of each
         else if (currentHeading >= 0 && targetHeading <= 0) {
             //headingDelta =  (targetHeading + currentHeading);
-        	headingDelta = Math.abs(targetHeading) + Math.abs(currentHeading);
-        	invertedHeadingDelta = Math.abs(360 + targetHeading) - Math.abs(currentHeading);
-        	headingDelta = Math.min(Math.abs(headingDelta), Math.abs(invertedHeadingDelta));
-        	if(invertedHeadingDelta != headingDelta) {
-        		headingDelta = headingDelta * -1;
-        	}
+            headingDelta = Math.abs(targetHeading) + Math.abs(currentHeading);
+            invertedHeadingDelta = Math.abs(360 + targetHeading) - Math.abs(currentHeading);
+            headingDelta = Math.min(Math.abs(headingDelta), Math.abs(invertedHeadingDelta));
+            if (invertedHeadingDelta != headingDelta) {
+                headingDelta = headingDelta * -1;
+            }
         }
         //one of each again
         else if (currentHeading <= 0 && targetHeading >= 0) {
             //headingDelta = -1 * (targetHeading + currentHeading);
-        	headingDelta = Math.abs(targetHeading) + Math.abs(currentHeading);
-        	invertedHeadingDelta = Math.abs(360 - targetHeading) - Math.abs(currentHeading);
-        	headingDelta = Math.min(Math.abs(headingDelta), Math.abs(invertedHeadingDelta));
-        	if(invertedHeadingDelta == headingDelta) {
-        		headingDelta = headingDelta * -1;
-        	}
+            headingDelta = Math.abs(targetHeading) + Math.abs(currentHeading);
+            invertedHeadingDelta = Math.abs(360 - targetHeading) - Math.abs(currentHeading);
+            headingDelta = Math.min(Math.abs(headingDelta), Math.abs(invertedHeadingDelta));
+            if (invertedHeadingDelta == headingDelta) {
+                headingDelta = headingDelta * -1;
+            }
         }
         // both negative
         else if (currentHeading <= 0 && targetHeading <= 0) {
             headingDelta = targetHeading - currentHeading;
         }
         return headingDelta;
-	}
-    public static double calcTurnRate( double currentHeading, double targetHeading, double proportion) {
+    }
+
+    public static double calcTurnRate(double currentHeading, double targetHeading, double proportion) {
 
         double headingDelta = headingDelta(currentHeading, targetHeading);
-        
-       
-		double commandedTurnRate = headingDelta * proportion;
-		return commandedTurnRate;
-	}
+
+        double commandedTurnRate = headingDelta * proportion;
+        return commandedTurnRate;
+    }
 
 }
